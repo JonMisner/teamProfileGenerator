@@ -1,0 +1,29 @@
+body {
+   background-image: url(../assets/SeeingSpots_1400x900.jpg);
+}
+
+h1 {
+   color: whitesmoke;
+   font-weight: 700;
+   font-size: 600%;
+   margin: 0;
+   padding: 0;
+}
+
+.card-header {
+   color: whitesmoke;
+   background-image: url(../assets/blue\ background.jpeg);
+}
+
+.card-body {
+   background-color: #d3d3d3;
+}
+
+.jumbotron {
+   background: none;
+   margin: 1em;
+   padding: 0;
+}
+.employee-card {
+   margin: .4em;
+}

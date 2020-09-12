@@ -1,3 +1,5 @@
+// global variables and requirements for scripts
+// =============================================
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -5,14 +7,16 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const util = require("util");
+
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
 const teamMembers = [];
-const writeFileAsync = util.promisify(fs.writeFile);
+
+// Prompts and Functions cotrolling them
+// =====================================
 
 // initial prompt to add team manager
 function addManager() {
@@ -39,16 +43,14 @@ function addManager() {
          message: "What is your manager's office number?"
       }
    ]).then(answers => {
-      console.log(answers);
       const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNum);
       console.log(manager);
       teamMembers.push(manager);
       createTeam()
    })
 }
-
-function createTeam(){
-   
+// asks what type of employee you want to add then sends user to appropriate function
+function createTeam(){  
    inquirer.prompt([
       {
          type: "list",
@@ -61,7 +63,6 @@ function createTeam(){
          ]
       }
    ]).then(userChoice => {
-      //look into switch case to determine if user wants to make an engineer or intern
       switch(userChoice.memberChoice){
          case "Engineer":
             createEngineer();
@@ -70,12 +71,11 @@ function createTeam(){
             createIntern();
             break;
          default:
-            // render(teamMembers);
             buildTeamPage();     
       }
    })
 }
-
+// creates and enginner class employee
 function createEngineer(){
    console.log("please add engineer info");
    inquirer.prompt([
@@ -100,14 +100,13 @@ function createEngineer(){
          message: "What is your engineer's Github account name?"
       }
    ]).then(answers => {
-      console.log(answers);
       const engineer = new Engineer (answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
       console.log(engineer);
       teamMembers.push(engineer);
       createTeam();
    })
 }
-
+// creates an Intern class employee
 function createIntern(){
    console.log("please add intern info");
    inquirer.prompt([
@@ -132,7 +131,6 @@ function createIntern(){
          message: "What is your intern's school?"
       }
    ]).then(answers => {
-      console.log(answers);
       const intern = new Intern (answers.internName, answers.internId, answers.internEmail, answers.internSchool);
       console.log(intern);
       teamMembers.push(intern);
@@ -140,6 +138,8 @@ function createIntern(){
    })
 }
 
+// Function to build the team html page
+// ====================================
 function buildTeamPage(){
 const data = render(teamMembers);
 
@@ -149,4 +149,6 @@ fs.writeFile(outputPath, data, (err) => {
 });
 };
 
+// The function call that starts it all
+// ====================================
 addManager();
