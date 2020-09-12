@@ -6,6 +6,11 @@
     Dynamically generate a quick profile for members of a development team.
 ***
 
+  <img src="./Develop/assets/codeAndNode.png" style="width: 100%;">  
+  <img src="./Develop/assets/myTeam.png" style="width: 100%;">
+
+***
+
   ## Table of Contents
 
   * [Description](#description)
@@ -38,11 +43,10 @@
   ## Contributors
 
      Created by Jon Misner
-     Code assistance from Joseph Young
+     Code advice from Joseph Young
 ***
+
   ## Contact Information
 
-     jonmisner or jonmisner86@gmail.com
+     Github: jonmisner or jonmisner86@gmail.com
 ***
-    ### License: None
-***  
