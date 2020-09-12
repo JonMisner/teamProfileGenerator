@@ -142,11 +142,11 @@ function buildTeamPage(){
 //fs write file
 //use outpath var
 //use teamMembers array as data
-const team = new Uint8Array(Buffer.from('Hello Node.js'));
-fs.writeFile('message.txt', data, (err) => {
+const data = teamMembers;
+fs.writeFile('teamPage.html', data, (err) => {
   if (err) throw err;
   console.log('The file has been saved!');
 });
-}
+};
 
 addManager();

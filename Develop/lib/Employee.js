@@ -6,7 +6,6 @@ class Employee {
       this.email = email
    }
 
-
 };
 
 Employee.prototype.getId = function () {
